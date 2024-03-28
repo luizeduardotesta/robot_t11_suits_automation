@@ -1,1 +1,4 @@
 settings.json
+test_data.yaml
+*.html
+*.xml

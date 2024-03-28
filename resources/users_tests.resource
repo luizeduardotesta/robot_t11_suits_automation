@@ -5,6 +5,7 @@ Library    String
 Library    Collections
 Library    OperatingSystem
 Library    cpf_generator
+Variables    test_data/test_data.yaml
 
 *** Keywords ***
 Create API session
@@ -12,7 +13,7 @@ Create API session
     Create Session    alias=APIsuits       url=https://suits.qacoders-academy.com.br/    headers=${headers}
 
 Login with admin
-    ${body}    Create Dictionary    mail=sysadmin@qacoders.com    password=1234@Test
+    ${body}    Create Dictionary    mail=${admin_mail}    password=${admin_password}
     Log                  ${body}
     Create API session
     ${response}    POST On Session    alias=APIsuits    url=/api/login/    json=${body}    expected_status=200
