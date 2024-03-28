@@ -1,10 +1,10 @@
 *** Settings ***
 Documentation
-Library    RequestsLibrary
-Library    String
-Library    Collections
-Library    OperatingSystem
-Library    cpf_generator
+Library      RequestsLibrary
+Library      String
+Library      Collections
+Library      OperatingSystem
+Library      cpf_generator
 Variables    test_data/test_data.yaml
 
 *** Keywords ***
@@ -32,7 +32,8 @@ Create user data
     Log    CPF: ${output}  
 
 Create a new ususer
-    ${body}              Create Dictionary     fullName=Luiz Testa          mail=${MAIL_TEST}    password=1234@Test    accessProfile=ADMIN    cpf=${CPF}    confirmPassword=1234@Test 
+    ${body}              Create Dictionary     fullName=Luiz Testa          mail=${MAIL_TEST}    password=1234@Test    accessProfile=ADMIN    
+    ...    cpf=${CPF}    confirmPassword=1234@Test 
     Log                  ${body}
     Create API session
     ${response}          POST On Session       alias=APIsuits          url=/api/user/          json=${body}    expected_status=201
