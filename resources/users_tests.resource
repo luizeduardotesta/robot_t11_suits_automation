@@ -74,6 +74,13 @@ Update the created user fullName and mail
     ${update_user_fullname}    PUT On Session       alias=APIsuits     url=/api/user/${USER_ID}    expected_status=200    headers=${headers}    
     ...    data={"fullName":"Luiz Eduardo", "mail":"${USER_MAIL}"}
 
+Update the created user status
+    ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
+    ${update_status}    PUT On Session       alias=APIsuits     url=/api/user/status/${USER_ID}    expected_status=200    headers=${headers}    
+    ...    data={"status":"true"}
+    Set Test Variable    ${PUT_RESPONSE}    ${update_status.json()}
+    Dictionary Should Contain Item    ${PUT_RESPONSE}    msg    Status do usuario atualizado com sucesso para status true.
+
 List the updated user
     ${headers}    Create Dictionary    Authorization=${USER_TOKEN}
     ${get_response}    GET On Session    alias=APIsuits          url=/api/user/${USER_ID}      expected_status=200    headers=${headers}
