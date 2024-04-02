@@ -6,7 +6,7 @@ ${ADMIN_TOKEN}
 ${USER_TOKEN}
 
 *** Test Cases ***
-Cenario com PUT: Editar um novo usuário com sucesso
+Cenario com PUT: Editar um usuário com sucesso
     Login with admin
     Create user data
     Create a new user

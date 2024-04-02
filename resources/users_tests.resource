@@ -83,3 +83,12 @@ Check the updated user data
     Log    ${GET_RESPONSE}
     Dictionary Should Contain Item    ${GET_RESPONSE}    fullName    Luiz Eduardo
     Dictionary Should Contain Item    ${GET_RESPONSE}    mail        ${USER_MAIL}
+
+Delete the created user
+    ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
+    ${delete_user}    DELETE On Session       alias=APIsuits     url=/api/user/${USER_ID}    expected_status=200    headers=${headers}
+    Set Test Variable    ${DELETE_RESPONSE}    ${delete_user.json()} 
+
+Check if the user was deleted
+    Log    ${DELETE_RESPONSE}
+    Dictionary Should Contain Item    ${DELETE_RESPONSE}    msg    Usuário deletado com sucesso!.
