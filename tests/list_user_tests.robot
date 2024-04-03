@@ -14,7 +14,8 @@ Cenario com GET: Listar um usuário com sucesso
 
 Cenario com GET: Contar todos os usuários com sucesso
     Login with admin
-    Count users
+    Inicial count users
     Create user data
     Create a new user
-    Count users
+    Updated count users
+    Check User Count Increase

@@ -69,10 +69,22 @@ Check the created user data
     Dictionary Should Contain Item    ${GET_RESPONSE}    cpf         ${CPF}
     Dictionary Should Contain Item    ${GET_RESPONSE}    _id         ${USER_ID}
 
-Count users
+Inicial count users
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
     ${get_response}    GET On Session    alias=APIsuits          url=/api/user/count/      expected_status=200    headers=${headers}
     Set Task Variable    ${GET_RESPONSE}    ${get_response.json()}
+    Set Task Variable    ${inicial_count_result}    ${get_response["count"]}
+
+Updated count users
+    ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
+    ${get_response}    GET On Session    alias=APIsuits          url=/api/user/count/      expected_status=200    headers=${headers}
+    Set Task Variable    ${GET_RESPONSE}    ${get_response.json()}
+    Set Task Variable    ${updated_count_result}    ${get_response["count"]}
+
+Check User Count Increase
+    Log    ${inicial_count_result}
+    Log    ${updated_count_result}
+    Should Be True    ${updated_count_result} == ${inicial_count_result} + 1
 
 Update the created user fullName and mail
     ${headers}    Create Dictionary    Authorization=${USER_TOKEN}
