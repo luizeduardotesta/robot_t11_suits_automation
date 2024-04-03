@@ -69,6 +69,11 @@ Check the created user data
     Dictionary Should Contain Item    ${GET_RESPONSE}    cpf         ${CPF}
     Dictionary Should Contain Item    ${GET_RESPONSE}    _id         ${USER_ID}
 
+Count users
+    ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
+    ${get_response}    GET On Session    alias=APIsuits          url=/api/user/count/      expected_status=200    headers=${headers}
+    Set Task Variable    ${GET_RESPONSE}    ${get_response.json()}
+
 Update the created user fullName and mail
     ${headers}    Create Dictionary    Authorization=${USER_TOKEN}
     ${update_user_fullname}    PUT On Session       alias=APIsuits     url=/api/user/${USER_ID}    expected_status=200    headers=${headers}    
