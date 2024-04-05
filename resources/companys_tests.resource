@@ -1,22 +1,7 @@
 *** Settings ***
-Documentation
-Library      RequestsLibrary
-Library      String
-Library      Collections
-Library      OperatingSystem
-Resource     users_tests.resource
-Variables    test_data/test_data.yaml
+Resource    ../tests/utils/resources.robot
 
 *** Keywords ***
-Create company data
-    ${generate_cnpj}        Generate Random String    14    [NUMBERS]
-    Log                     ${generate_cnpj}
-    Set Test Variable       ${CNPJ}                   ${generate_cnpj}
-    ${random_word}          Generate Random String    8     [LETTERS]
-    ${random_word}          Convert to lower case     ${random_word}
-    Set Test Variable       ${COMPANY_MAIL}           ${random_word}@qacoders.com.br
-    Log                     ${COMPANY_MAIL} 
-
 Create a new company
     ${body}              Create Dictionary                           corporateName=${company_corporateName}    registerCompany=${CNPJ}    
     ...                  mail=${COMPANY_MAIL}                        matriz=${company_matriz}                              
@@ -24,7 +9,7 @@ Create a new company
     ...                  address=${address}    
     Log                  ${body}
     Create API admin session
-    ${response}          POST On Session       alias=APIsuits          url=/api/company/          json=${body}    expected_status=201
+    ${response}          POST On Session       alias=${alias}          url=/api/company/          json=${body}    expected_status=201
     Log                  ${response.json()}
     Set Test Variable    ${COMPANY_ID}            ${response.json()["newCompany"]["_id"]}
     Set Test Variable    ${RESPONSE}              ${response.json()}
