@@ -1,9 +1,10 @@
 *** Settings ***
-Documentation
+Documentation    Faker CPF
 Library      RequestsLibrary
 Library      String
 Library      Collections
 Library      OperatingSystem
+Library      FakerLibrary    locale=pt_BR
 Library      cpf_generator
 
 #Variables
