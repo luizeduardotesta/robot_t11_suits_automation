@@ -8,11 +8,17 @@ Library      FakerLibrary    locale=pt_BR
 Library      cpf_generator
 
 #Variables
-Variables    ../../resources/test_data/test_data.yaml
+Variables    ./data/test_data.yaml
 
 #Resources
-Resource    ../../resources/companys_tests.resource
-Resource    ../../resources/users_tests.resource
-Resource    ../../resources/login/auth_sysadmin.resource
-Resource    ../../resources/login/auth_common.resource
-Resource    dynamic_data.robot
+Resource    ./data/dynamic_data.robot
+Resource    ../company/create_company/create_company.resource
+Resource    ../company/list_company/list_company.resource
+Resource    ../company/update_company/update_company.resource
+Resource    ../company/delete_company/delete_company.resource
+Resource    ../login/auth_sysadmin.resource
+Resource    ../login/auth_common.resource
+Resource    ../user/create_user/create_user.resource
+Resource    ../user/list_user/list_user.resource
+Resource    ../user/update_user/update_user.resource
+Resource    ../user/delete_user/delete_user.resource

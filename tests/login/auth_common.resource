@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../tests/utils/resources.robot
+Resource    ../utils/resources.robot
 
 *** Keywords ***
 Create API user session

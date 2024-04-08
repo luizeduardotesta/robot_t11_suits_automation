@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ./utils/resources.robot
+Resource    ../../utils/resources.robot
 
 *** Variables ***
 ${ADMIN_TOKEN}

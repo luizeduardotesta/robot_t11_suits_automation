@@ -1,0 +1,36 @@
+*** Settings ***
+Resource    ../../utils/resources.robot
+
+*** Keywords ***
+List the created company
+    ${get_response}    GET On Session    alias=${alias}          url=/api/company/${COMPANY_ID}      expected_status=200
+    Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
+
+Check the created company data
+    Log    ${GET_RESPONSE}
+    ${expected_telephone}             Convert To string                       ${company_telephone}
+    Dictionary Should Contain Item    ${GET_RESPONSE}    corporateName         ${company_corporateName}
+    Dictionary Should Contain Item    ${GET_RESPONSE}    mail                  ${COMPANY_MAIL}
+    Dictionary Should Contain Item    ${GET_RESPONSE}    registerCompany       ${CNPJ}
+    Dictionary Should Contain Item    ${GET_RESPONSE}    matriz                ${company_matriz}
+    Dictionary Should Contain Item    ${GET_RESPONSE}    responsibleContact    ${responsibleContact}
+    Dictionary Should Contain Item    ${GET_RESPONSE}    telephone             ${expected_telephone}
+    Dictionary Should Contain Item    ${GET_RESPONSE}    serviceDescription    ${serviceDescription}
+    Dictionary Should Contain Item    ${GET_RESPONSE}    _id                   ${COMPANY_ID}
+
+Inicial count company
+    ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
+    ${get_response}    GET On Session    alias=${alias}          url=/api/company/count/      expected_status=200    headers=${headers}
+    Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
+    Set Test Variable    ${inicial_count_result}    ${get_response["count"]}
+
+Updated count company
+    ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
+    ${get_response}    GET On Session    alias=${alias}          url=/api/company/count/      expected_status=200    headers=${headers}
+    Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
+    Set Test Variable    ${updated_count_result}    ${get_response["count"]}
+
+Check company Count Increase
+    Log    ${inicial_count_result}
+    Log    ${updated_count_result}
+    Should Be True    ${updated_count_result} == ${inicial_count_result} + 1

@@ -1,0 +1,12 @@
+*** Settings ***
+Resource    ../../utils/resources.robot
+
+*** Keywords ***
+Delete the created user
+    ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
+    ${delete_user}    DELETE On Session       alias=${alias}     url=/api/user/${USER_ID}    expected_status=200    headers=${headers}
+    Set Test Variable    ${DELETE_RESPONSE}    ${delete_user.json()} 
+
+Check if the user was deleted
+    Log    ${DELETE_RESPONSE}
+    Dictionary Should Contain Item    ${DELETE_RESPONSE}    msg    Usuário deletado com sucesso!.

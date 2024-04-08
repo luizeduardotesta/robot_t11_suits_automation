@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../tests/utils/resources.robot
+Resource    ../resources.robot
 
 *** Keywords ***
 Create user data
