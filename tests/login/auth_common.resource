@@ -10,7 +10,7 @@ Login with user
     ${body}    Create Dictionary    mail=${USER_MAIL}    password=${user_password}
     Log                  ${body}
     Create API user session
-    ${response}    POST On Session    alias=${alias}    url=/api/login/    json=${body}    expected_status=200
+    ${response}    POST On Session    alias=${alias}    url=${login_url}    json=${body}    expected_status=200
     Log    ${response.json()}
     Set Test Variable    ${USER_TOKEN}              ${response.json()["token"]}
     Log    ${USER_TOKEN}

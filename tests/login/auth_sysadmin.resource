@@ -10,7 +10,7 @@ Login with admin
     ${body}    Create Dictionary    mail=${admin_mail}    password=${admin_password}
     Log                  ${body}
     Create API admin session
-    ${response}    POST On Session    alias=${alias}    url=/api/login/    json=${body}    expected_status=200
+    ${response}    POST On Session    alias=${alias}    url=${login_url}    json=${body}    expected_status=200
     Log    ${response.json()}
     Set Test Variable    ${ADMIN_TOKEN}              ${response.json()["token"]}
     Log    ${ADMIN_TOKEN}
