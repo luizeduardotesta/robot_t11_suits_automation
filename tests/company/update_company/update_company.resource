@@ -4,25 +4,25 @@ Resource    ../../utils/resources.robot
 *** Keywords ***
 Update the created company data
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
-    ${update_company}    PUT On Session       alias=${alias}     url=/api/company/${COMPANY_ID}    expected_status=200    headers=${headers}    
+    ${update_company}    PUT On Session       alias=${alias}     url=${company_url}${COMPANY_ID}    expected_status=200    headers=${headers}    
     ...    data={"corporateName":"Testcompany", "mail":"${COMPANY_MAIL}", "matriz":"Teste", "responsibleContact":"Marcio"}
 
 Update the created company address
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
-    ${update_address}    PUT On Session       alias=${alias}     url=/api/company/address/${COMPANY_ID}    expected_status=200    headers=${headers}    
+    ${update_address}    PUT On Session       alias=${alias}     url=${company_address_url}${COMPANY_ID}    expected_status=200    headers=${headers}    
     ...    data={"address":[{"zipCode":"99999998", "city":"Cascavel", "district":"Centro", "street":"Rua Recife", "number":"100", "country":"Brazil", "state":"PR"}]}
     Set Test Variable    ${PUT_RESPONSE}    ${update_address.json()}
 
 Update the created company status
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
-    ${update_status}    PUT On Session       alias=${alias}     url=/api/company/status/${COMPANY_ID}    expected_status=200    headers=${headers}    
+    ${update_status}    PUT On Session       alias=${alias}     url=${company_status_url}${COMPANY_ID}    expected_status=200    headers=${headers}    
     ...    data={"status":"false"}
     Set Test Variable    ${PUT_RESPONSE}    ${update_status.json()}
     Dictionary Should Contain Item    ${PUT_RESPONSE}    msg    Status da companhia atualizado com sucesso.
     
 List the updated company
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
-    ${get_response}    GET On Session    alias=${alias}          url=/api/company/${COMPANY_ID}      expected_status=200    headers=${headers}
+    ${get_response}    GET On Session    alias=${alias}          url=${company_url}${COMPANY_ID}      expected_status=200    headers=${headers}
     Set Task Variable    ${GET_RESPONSE}    ${get_response.json()}
 
 Check the updated company data

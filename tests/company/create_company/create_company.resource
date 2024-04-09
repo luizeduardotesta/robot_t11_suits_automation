@@ -9,7 +9,7 @@ Create a new company
     ...                  address=${address}    
     Log                  ${body}
     Create API admin session
-    ${response}          POST On Session       alias=${alias}          url=/api/company/          json=${body}    expected_status=201
+    ${response}          POST On Session       alias=${alias}          url=${company_url}          json=${body}    expected_status=201
     Log                  ${response.json()}
     Set Test Variable    ${COMPANY_ID}            ${response.json()["newCompany"]["_id"]}
     Set Test Variable    ${RESPONSE}              ${response.json()}
