@@ -8,7 +8,7 @@ Library      FakerLibrary    locale=pt_BR
 Library      cpf_generator
 
 #Variables
-Variables    ./data/test_data.yaml
+Variables    ../../config/test_data.yaml
 
 #Resources
 Resource    ./data/dynamic_data.robot
