@@ -12,6 +12,10 @@ Variables    ./data/test_data.yaml
 
 #Resources
 Resource    ./data/dynamic_data.robot
+Resource    ../board/create_board/create_board.resource
+Resource    ../board/list_board/list_board.resource
+Resource    ../board/update_board/update_board.resource
+#Resource    ../board/delete_board/delete_board.resource
 Resource    ../company/create_company/create_company.resource
 Resource    ../company/list_company/list_company.resource
 Resource    ../company/update_company/update_company.resource

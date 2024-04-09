@@ -4,7 +4,7 @@ Resource    ../../utils/resources.robot
 *** Keywords ***
 Update the created company data
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
-    ${update_user_fullname}    PUT On Session       alias=${alias}     url=/api/company/${COMPANY_ID}    expected_status=200    headers=${headers}    
+    ${update_company}    PUT On Session       alias=${alias}     url=/api/company/${COMPANY_ID}    expected_status=200    headers=${headers}    
     ...    data={"corporateName":"Testcompany", "mail":"${COMPANY_MAIL}", "matriz":"Teste", "responsibleContact":"Marcio"}
 
 Update the created company address

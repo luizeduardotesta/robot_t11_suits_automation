@@ -3,7 +3,6 @@ Resource    ../../utils/resources.robot
 
 *** Variables ***
 ${ADMIN_TOKEN}
-${USER_TOKEN}
 
 *** Test Cases ***
 Cenario com PUT: Editar os dados da empresa com sucesso

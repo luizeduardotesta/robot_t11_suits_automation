@@ -18,19 +18,19 @@ Check the created company data
     Dictionary Should Contain Item    ${GET_RESPONSE}    serviceDescription    ${serviceDescription}
     Dictionary Should Contain Item    ${GET_RESPONSE}    _id                   ${COMPANY_ID}
 
-Inicial count company
+Inicial count companys
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
     ${get_response}    GET On Session    alias=${alias}          url=/api/company/count/      expected_status=200    headers=${headers}
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
     Set Test Variable    ${inicial_count_result}    ${get_response["count"]}
 
-Updated count company
+Updated count companys
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
     ${get_response}    GET On Session    alias=${alias}          url=/api/company/count/      expected_status=200    headers=${headers}
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
     Set Test Variable    ${updated_count_result}    ${get_response["count"]}
 
-Check company Count Increase
+Check company count increase
     Log    ${inicial_count_result}
     Log    ${updated_count_result}
     Should Be True    ${updated_count_result} == ${inicial_count_result} + 1

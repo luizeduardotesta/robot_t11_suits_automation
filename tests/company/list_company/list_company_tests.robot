@@ -14,8 +14,8 @@ Cenario com GET: Listar uma empresa com sucesso
 
 Cenario com GET: Contar todas as empresa com sucesso
     Login with admin
-    Inicial count company
+    Inicial count companys
     Create company data
     Create a new company
-    Updated count company
-    Check company Count Increase
+    Updated count companys
+    Check company count increase

@@ -25,7 +25,7 @@ Updated count users
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
     Set Test Variable    ${updated_count_result}    ${get_response["count"]}
 
-Check User Count Increase
+Check user count increase
     Log    ${inicial_count_result}
     Log    ${updated_count_result}
     Should Be True    ${updated_count_result} == ${inicial_count_result} + 1

@@ -18,4 +18,4 @@ Cenario com GET: Contar todos os usuários com sucesso
     Create user data
     Create a new user
     Updated count users
-    Check User Count Increase
+    Check user count increase
