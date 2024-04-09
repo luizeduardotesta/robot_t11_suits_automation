@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Faker CPF
+Documentation    
 Library      RequestsLibrary
 Library      String
 Library      Collections
