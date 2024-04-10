@@ -4,7 +4,8 @@ Este é um projeto feito para estudar, melhor entender e aprender a testar utili
 
 ## Estrutura do Projeto
 
-robot_t11_automation/
+```
+robot_t11_automation/ 
 │
 ├── backend/
 │   ├── tests/
@@ -57,7 +58,9 @@ robot_t11_automation/
 ├── frontend/
 │   ├── tests/
 │   └── config/
+├── .gitignore
 └── README.md
+```
 
 
 ## Pré-requisitos
