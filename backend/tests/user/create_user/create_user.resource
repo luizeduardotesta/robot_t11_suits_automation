@@ -7,7 +7,7 @@ Create a new user
     ...                  accessProfile=ADMIN    cpf=${CPF}    confirmPassword=${user_password} 
     Log                  ${body}
     Create API admin session
-    ${response}          POST On Session       alias=${alias}          url=${user_url}          json=${body}    expected_status=201
+    ${response}          POST On Session       alias=${alias.${env}}          url=${user_url}          json=${body}    expected_status=201
     Log                  ${response.json()}
     Set Test Variable    ${USER_ID}            ${response.json()["user"]["_id"]}
     Set Test Variable    ${RESPONSE}           ${response.json()}

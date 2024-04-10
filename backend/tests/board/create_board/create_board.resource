@@ -6,7 +6,7 @@ Create a new board
     ${body}              Create Dictionary     boardName=${BOARD_NAME}
     Log                  ${body}
     Create API admin session
-    ${response}          POST On Session       alias=${alias}          url=${board_url}          json=${body}    expected_status=201
+    ${response}          POST On Session       alias=${alias.${env}}          url=${board_url}          json=${body}    expected_status=201
     Log                  ${response.json()}
     Set Test Variable    ${BOARD_ID}            ${response.json()["newBoard"]["_id"]}
     Set Test Variable    ${BOARD_CODE}          ${response.json()["newBoard"]["boardCode"]}

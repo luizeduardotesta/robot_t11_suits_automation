@@ -59,10 +59,16 @@ To execute the automated tests of this project, follow the instructions below:
 Execution Steps:
 Open the terminal or command prompt.
 Navigate to the root directory of the project.
-Run the following command to access the backend:
+Run the following command to access the Suits backend environment:
 
 ```bash
-    robot -d backend/log backend/tests
+    robot -d backend/log -v env:suits backend/tests
+```
+
+or the following command to access the The-originals backend environment:
+
+```bash
+    robot -d backend/log -v env:originals backend/tests
 ```
 
 Run the following command to access the frontend:

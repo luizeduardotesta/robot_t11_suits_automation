@@ -3,7 +3,7 @@ Resource    ../../utils/resources.robot
 
 *** Keywords ***
 List the created user
-    ${get_response}    GET On Session    alias=${alias}          url=${user_url}${USER_ID}      expected_status=200
+    ${get_response}    GET On Session    alias=${alias.${env}}          url=${user_url}${USER_ID}      expected_status=200
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
 
 Check the created user data
@@ -15,13 +15,13 @@ Check the created user data
 
 Inicial count users
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
-    ${get_response}    GET On Session    alias=${alias}          url=${count_user_url}      expected_status=200    headers=${headers}
+    ${get_response}    GET On Session    alias=${alias.${env}}          url=${count_user_url}      expected_status=200    headers=${headers}
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
     Set Test Variable    ${inicial_count_result}    ${get_response["count"]}
 
 Updated count users
     ${headers}    Create Dictionary    Authorization=${ADMIN_TOKEN}
-    ${get_response}    GET On Session    alias=${alias}          url=${count_user_url}      expected_status=200    headers=${headers}
+    ${get_response}    GET On Session    alias=${alias.${env}}          url=${count_user_url}      expected_status=200    headers=${headers}
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
     Set Test Variable    ${updated_count_result}    ${get_response["count"]}
 
