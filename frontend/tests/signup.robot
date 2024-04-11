@@ -17,12 +17,12 @@ Test case: Register a user with the administrator profile
     ...    password=${admin_password}
 
     ${create_user}    Create Dictionary
-    ...    fullName=Luiz Testa 
+    ...    fullName=${fullName} 
     ...    mail=${USER_MAIL}
-    ...    accessProfile=ADMIN
+    ...    accessProfile=${accessProfile}
     ...    cpf=${CPF}
-    ...    password=Test@1234
-    ...    confirmPassword=Test@1234    
+    ...    password=${password}
+    ...    confirmPassword=${confirmPassword}    
 
     Given User is on the login page
     When User the login data and click the login button    ${admin_auth}

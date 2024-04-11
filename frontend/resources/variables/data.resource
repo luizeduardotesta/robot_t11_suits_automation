@@ -14,15 +14,18 @@ Create user data
     Log                         ${CPF}
 
 *** Variables ***
-
+#URL data
 ${browser}                   chrome
-${loginButton}               //button[contains(@id,'login')]
 ${login_url}                 https://automacao.qacoders-academy.com.br/login
 ${home_url}                  https://automacao.qacoders-academy.com.br/home
 
+#Login data
+${loginText}                 //h3[contains(.,'Login')]
+${loginButton}               //button[contains(@id,'login')]
 ${adminMailInput}            //input[contains(@id,'email')]
 ${passwordInput}             //input[contains(@id,'password')]
-${logoutButton}              //button[@class='css-1nvbq2d'][contains(.,'Logout')]
+
+#Register data
 ${cadastroList}              //div[contains(@id,'Cadastros')]
 ${usuariosList}              //div[contains(@id,'Usuários')]
 ${novoCadastroButton}        //button[contains(@id,'Novo Cadastro')]
@@ -32,3 +35,11 @@ ${accessProfileInput}        //input[contains(@id,'accessProfile')]
 ${cpfInput}                  //input[contains(@id,'cpf')]
 ${confirmPasswordInput}      //input[contains(@id,'confirmPassword')]
 ${saveButton}                //button[contains(@id,'save')]
+
+${logoutButton}              //button[@class='css-1nvbq2d'][contains(.,'Logout')]
+
+#User data
+${fullName}           Luiz Testa 
+${accessProfile}      ADMIN
+${password}           Test@1234
+${confirmPassword}    Test@1234 
