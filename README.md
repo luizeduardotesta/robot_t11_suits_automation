@@ -27,13 +27,17 @@ robot_t11_automation/
 │   ├── utils/
 │   │   ├── resources.robot
 │   │   └── data/
-│   │       └── dynamic_data.robot
 │   └── config/
 │       └── settings.yaml
 │
 ├── frontend/
-│   ├── tests/
-│   └── config/
+│   ├── config/
+│   │   └── settings.yaml
+│   ├── resources/
+│   │   ├── actions/
+│   │   ├── variables/
+│   │   └──base.resource
+│   └── tests/
 ├── .gitignore
 └── README.md
 ```

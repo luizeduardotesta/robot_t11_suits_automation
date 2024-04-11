@@ -1,4 +1,5 @@
 settings.json
-test_data.yaml
+*.yaml
 *.html
 *.xml
+*.png
