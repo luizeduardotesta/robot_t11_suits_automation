@@ -2,7 +2,8 @@
 Documentation    Projects main file
 Library          SeleniumLibrary
 Library          String
-Resource         ./actions/signup.resource
+Resource         ./actions/login_page.resource
+Resource         ./actions/home_page.resource
 
 *** Keywords ***
 Start Session
