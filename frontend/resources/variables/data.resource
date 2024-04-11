@@ -41,8 +41,8 @@ ${homeIcon}                  //a[contains(@id,'home')]
 
 ${nextPageButton}            //button[@class='css-kab9pu']
 ${previousPageButton}        //button[@id='backButton']
-${paginationNext}            (//div[contains(.,'31-60 de 688')])[5]
-${paginationPrevious}        (//div[contains(.,'1-30 de 688')])[5]
+${paginationNext}            (//div[contains(.,'31-60 de')])[5]
+${paginationPrevious}        (//div[contains(.,'1-30 de')])[5]
 
 
 #User data
