@@ -3,6 +3,9 @@ Resource    ../../utils/resources.robot
 
 *** Keywords ***
 Create a new user
+    ${CPF}    Generate CPF
+    Set Test Variable    ${CPF}
+
     ${body}              Create Dictionary     fullName=${user_fullName}          mail=${USER_MAIL}    password=${user_password}    
     ...                  accessProfile=ADMIN    cpf=${CPF}    confirmPassword=${user_password} 
     Log                  ${body}

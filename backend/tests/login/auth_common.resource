@@ -11,10 +11,8 @@ Create API user session
 
 Login with user
     ${body}    Create Dictionary    mail=${USER_MAIL}    password=${user_password}
-    Log                  ${body}
     Create API user session
     ${response}    POST On Session    alias=${alias.${env}}    url=${login_url}    json=${body}    expected_status=200
-    Log    ${response.json()}
     Set Test Variable    ${USER_TOKEN}              ${response.json()["token"]}
-    Log    ${USER_TOKEN}
     Dictionary Should Contain Item    ${response.json()}    msg    Olá ${user_fullName}, autenticação autorizada com sucesso!
+    Should Not Be Empty    ${ADMIN_TOKEN}

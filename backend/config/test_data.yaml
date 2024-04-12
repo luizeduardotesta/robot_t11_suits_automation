@@ -1,0 +1,7 @@
+url:
+  suits: https://suits.qacoders-academy.com.br
+  originals: https://the-originals.qacoders-academy.com.br
+
+alias: 
+  suits: APIsuits
+  originals: APIoriginals

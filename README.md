@@ -50,11 +50,17 @@ Make sure you have installed the following prerequisites before running the test
 ### Tools and Libraries
 
 - [Python](https://www.python.org/) - Make sure you have Python installed.
-- [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/) - Make sure you have Chromedriver installed to run UI tests using the Chrome browser.
 - [Robot Framework](https://robotframework.org/) - Test automation framework.
+- [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/) - Make sure you have Chromedriver installed to run UI tests using the Chrome browser.
 - [SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html) - Library for web testing automation.
 - [RequestsLibrary](https://github.com/MarketSquare/robotframework-requests) - Library for making HTTP requests in API tests.
 - [FakerLibrary](https://github.com/guykisel/robotframework-faker) - Library for generating fake data.
+
+You can install all this Librarys by run the following command:
+
+```bash
+    pip install -r requirements.txt
+```
 
 ## How to Run the Tests
 

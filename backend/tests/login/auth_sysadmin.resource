@@ -10,10 +10,9 @@ Create API admin session
     Create Session    alias=${alias.${env}}       url=${url.${env}}    headers=${headers}    disable_warnings=${true}
 
 Login with admin
+    [Documentation]    Logs in as admin and retrieves the authentication token.
     ${body}    Create Dictionary    mail=${admin_mail}    password=${admin_password}
-    Log                  ${body}
     Create API admin session
     ${response}    POST On Session    alias=${alias.${env}}    url=${login_url}    json=${body}    expected_status=200
-    Log    ${response.json()}
     Set Test Variable    ${ADMIN_TOKEN}              ${response.json()["token"]}
-    Log    ${ADMIN_TOKEN}
+    Should Not Be Empty    ${ADMIN_TOKEN}
