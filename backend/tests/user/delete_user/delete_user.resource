@@ -8,5 +8,4 @@ Delete the created user
     Set Test Variable    ${DELETE_RESPONSE}    ${delete_user.json()} 
 
 Check if the user was deleted
-    Log    ${DELETE_RESPONSE}
     Dictionary Should Contain Item    ${DELETE_RESPONSE}    msg    Usuário deletado com sucesso!.

@@ -26,20 +26,17 @@ List the updated company
     Set Task Variable    ${GET_RESPONSE}    ${get_response.json()}
 
 Check the updated company data
-    Log    ${GET_RESPONSE}
     Dictionary Should Contain Item    ${GET_RESPONSE}    corporateName         Testcompany
     Dictionary Should Contain Item    ${GET_RESPONSE}    mail                  ${COMPANY_MAIL}
     Dictionary Should Contain Item    ${GET_RESPONSE}    matriz                Teste
     Dictionary Should Contain Item    ${GET_RESPONSE}    responsibleContact    Marcio
 
 Check the updated company address
-    Log    ${GET_RESPONSE}
-    ${address_list}    Get From Dictionary    ${GET_RESPONSE}    address    ${address}
-    Log    ${address_list}
-    Dictionary Should Contain Item    ${address_list[0]}    zipCode     99999998
-    Dictionary Should Contain Item    ${address_list[0]}    city        Cascavel
-    Dictionary Should Contain Item    ${address_list[0]}    district    Centro
-    Dictionary Should Contain Item    ${address_list[0]}    street      Rua Recife
-    Dictionary Should Contain Item    ${address_list[0]}    number      100
-    Dictionary Should Contain Item    ${address_list[0]}    country     Brazil
-    Dictionary Should Contain Item    ${address_list[0]}    state       PR
+    ${address_list}    Get From Dictionary    ${GET_RESPONSE}       address     default=None
+    Dictionary Should Contain Item            ${address_list[0]}    zipCode     99999998
+    Dictionary Should Contain Item            ${address_list[0]}    city        Cascavel
+    Dictionary Should Contain Item            ${address_list[0]}    district    Centro
+    Dictionary Should Contain Item            ${address_list[0]}    street      Rua Recife
+    Dictionary Should Contain Item            ${address_list[0]}    number      100
+    Dictionary Should Contain Item            ${address_list[0]}    country     Brazil
+    Dictionary Should Contain Item            ${address_list[0]}    state       PR

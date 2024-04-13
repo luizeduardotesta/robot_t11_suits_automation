@@ -8,6 +8,6 @@ Resource         ./actions/user_page.resource
 
 *** Keywords ***
 Start Session
-    Open Browser    ${login_url}    browser=${browser}    
-
+    Open Browser    ${login_url}    browser=${browser}
+    Maximize Browser Window    
     Wait Until Element Is Visible    ${loginText}

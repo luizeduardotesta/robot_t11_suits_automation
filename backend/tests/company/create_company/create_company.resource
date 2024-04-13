@@ -15,15 +15,12 @@ Create a new company
     ${body}              Create Dictionary                   corporateName=${company_corporateName}    registerCompany=${CNPJ}    
     ...                  mail=${COMPANY_MAIL}                matriz=${company_matriz}        responsibleContact=${responsibleContact}                      
     ...                  telephone=${company_telephone}      serviceDescription=${serviceDescription}    address=${address_list}                        
-    Log                  ${body}
     Create API admin session
     ${response}          POST On Session       alias=${alias.${env}}          url=${company_url}          json=${body}    expected_status=201
-    Log                  ${response.json()}
     Set Test Variable    ${COMPANY_ID}            ${response.json()["newCompany"]["_id"]}
     Set Test Variable    ${RESPONSE}              ${response.json()}
 
 Check if the new company was created
-    Log                              ${RESPONSE}
     Should Not Be Empty              ${RESPONSE}[newCompany]                _id
     Dictionary Should Contain Key    ${RESPONSE}[newCompany]                corporateName         ${company_corporateName}
     Dictionary Should Contain Key    ${RESPONSE}[newCompany]                registerCompany       ${CNPJ}

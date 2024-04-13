@@ -8,10 +8,8 @@ Create user data
     ${random_word}              Generate Random String    length=8          chars=[LETTERS]
     ${random_word}              Convert to lower case     ${random_word}
     Set Test Variable           ${USER_MAIL}              ${random_word}@qacoders.com.br
-    Log                         ${USER_MAIL}  
     ${generate_cpf}             Generate Random String    11    [NUMBERS]
     Set Test Variable           ${CPF}                    ${generate_cpf}
-    Log                         ${CPF}
 
 *** Variables ***
 #URL data

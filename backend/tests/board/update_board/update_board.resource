@@ -13,5 +13,4 @@ List the updated board
     Set Task Variable    ${GET_RESPONSE}    ${get_response.json()}
 
 Check the updated board data
-    Log    ${GET_RESPONSE}
     Dictionary Should Contain Item    ${GET_RESPONSE}[board]    boardName    ${BOARD_NAME}

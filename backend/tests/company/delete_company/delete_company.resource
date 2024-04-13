@@ -8,5 +8,4 @@ Delete the created company
     Set Test Variable    ${DELETE_RESPONSE}    ${delete_company.json()} 
 
 Check if the company was deleted
-    Log    ${DELETE_RESPONSE}
     Dictionary Should Contain Item    ${DELETE_RESPONSE}    msg    Companhia deletado com sucesso.

@@ -7,7 +7,6 @@ List the created company
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
 
 Check the created company data
-    Log    ${GET_RESPONSE}
     ${expected_telephone}             Convert To string                       ${company_telephone}
     Dictionary Should Contain Item    ${GET_RESPONSE}    corporateName         ${company_corporateName}
     Dictionary Should Contain Item    ${GET_RESPONSE}    mail                  ${COMPANY_MAIL}
@@ -31,6 +30,4 @@ Updated count companys
     Set Test Variable    ${updated_count_result}    ${get_response["count"]}
 
 Check company count increase
-    Log    ${inicial_count_result}
-    Log    ${updated_count_result}
     Should Be True    ${updated_count_result} == ${inicial_count_result} + 1

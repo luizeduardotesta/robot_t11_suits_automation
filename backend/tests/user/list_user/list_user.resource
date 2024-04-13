@@ -7,7 +7,6 @@ List the created user
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
 
 Check the created user data
-    Log    ${GET_RESPONSE}
     Dictionary Should Contain Item    ${GET_RESPONSE}    fullName    ${user_fullName}
     Dictionary Should Contain Item    ${GET_RESPONSE}    mail        ${USER_MAIL}
     Dictionary Should Contain Item    ${GET_RESPONSE}    cpf         ${CPF}
@@ -26,6 +25,4 @@ Updated count users
     Set Test Variable    ${updated_count_result}    ${get_response["count"]}
 
 Check user count increase
-    Log    ${inicial_count_result}
-    Log    ${updated_count_result}
     Should Be True    ${updated_count_result} == ${inicial_count_result} + 1

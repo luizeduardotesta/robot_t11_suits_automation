@@ -28,10 +28,8 @@ List the updated user
     Set Test Variable    ${hashed_password}    ${get_response["password"]}
 
 Check the updated user data
-    Log    ${GET_RESPONSE}
     Dictionary Should Contain Item    ${GET_RESPONSE}    fullName    Luiz Eduardo
     Dictionary Should Contain Item    ${GET_RESPONSE}    mail        ${USER_MAIL}
 
 Check the updated user password
-    Log    ${GET_RESPONSE}
     Dictionary Should Contain Item    ${GET_RESPONSE}    password    ${hashed_password}

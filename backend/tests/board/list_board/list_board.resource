@@ -7,7 +7,6 @@ List the created board
     Set Test Variable    ${GET_RESPONSE}    ${get_response.json()}
 
 Check the created board data
-    Log    ${GET_RESPONSE}
     Dictionary Should Contain Item    ${GET_RESPONSE}[board]    boardName    ${BOARD_NAME}
     Dictionary Should Contain Item    ${GET_RESPONSE}[board]    boardCode    ${BOARD_CODE}
     Dictionary Should Contain Item    ${GET_RESPONSE}[board]    status       ${BOARD_STATUS}
@@ -26,6 +25,4 @@ Updated count boards
     Set Test Variable    ${updated_count_result}    ${get_response["count"]}
 
 Check board count increase
-    Log    ${inicial_count_result}
-    Log    ${updated_count_result}
     Should Be True    ${updated_count_result} == ${inicial_count_result} + 1
