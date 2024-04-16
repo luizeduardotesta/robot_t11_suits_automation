@@ -29,11 +29,11 @@ jobs:
 
       - name: Run backend tests
         working-directory: backend
-        run: robot -d log -v env:suits tests
+        run: robot -d backend/log -v env:suits backend/tests
 
       - name: Run frontend tests
         working-directory: frontend
-        run: robot -d log tests
+        run: robot -d frontend/log frontend/tests
 
       - name: Archive test reports
         uses: actions/upload-artifact@v2
