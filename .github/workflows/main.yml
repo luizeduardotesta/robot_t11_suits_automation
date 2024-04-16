@@ -27,6 +27,9 @@ jobs:
       - name: Install RequestsLibrary
         run: pip install --quiet robotframework-requests
 
+      - name: Install PyYAML
+        run: pip install pyyaml
+
       - name: Read ambientes.yaml file
         id: read-ambientes
         run: echo "::set-output name=ambientes::$(cat backend/config/ambientes.yaml)"
