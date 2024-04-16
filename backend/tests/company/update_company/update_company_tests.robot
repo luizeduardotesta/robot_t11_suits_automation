@@ -5,7 +5,7 @@ Resource    ../../utils/resources.robot
 ${ADMIN_TOKEN}
 
 *** Test Cases ***
-Cenario com PUT: Editar os dados da empresa com sucesso
+Scenario with PUT: Successfully edit company data
     Login with admin
     Create company data
     Create a new company
@@ -15,7 +15,7 @@ Cenario com PUT: Editar os dados da empresa com sucesso
     List the updated company
     Check the updated company data
 
-Cenario com PUT: Editar o emdereço da empresa com sucesso
+Scenario with PUT: Successfully edit company address
     Login with admin
     Create company data
     Create a new company
@@ -25,7 +25,7 @@ Cenario com PUT: Editar o emdereço da empresa com sucesso
     List the updated company
     Check the updated company address
 
-Cenario com PUT: Editar o status da empresa com sucesso
+Scenario with PUT: Successfully edit company status
     Login with admin
     Create company data
     Create a new company

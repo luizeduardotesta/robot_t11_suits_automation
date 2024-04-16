@@ -5,7 +5,7 @@ Resource    ../../utils/resources.robot
 ${ADMIN_TOKEN}
 
 *** Test Cases ***
-Cenario com PUT: Editar o nome da diretoria com sucesso
+Scenario with PUT: Editing the board name successfully
     Login with admin
     Create board data
     Create a new board

@@ -5,7 +5,7 @@ Resource    ../../utils/resources.robot
 ${ADMIN_TOKEN}
 
 *** Test Cases ***
-Cenario com DELETE: Deletar uma empresa com sucesso
+Scenario with DELETE: Delete a company Successfully
     Login with admin
     Create company data
     Create a new company

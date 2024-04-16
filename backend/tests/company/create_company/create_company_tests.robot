@@ -5,7 +5,7 @@ Resource    ../../utils/resources.robot
 ${ADMIN_TOKEN}
 
 *** Test Cases ***
-Cenario com POST: Cadastrar uma nova compania com sucesso
+Scenario with POST: Successfully register a new company
     Login with admin
     Create company data
     Create a new company

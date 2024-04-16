@@ -5,14 +5,18 @@ Resource    ../../utils/resources.robot
 ${ADMIN_TOKEN}
 
 *** Test Cases ***
-Cenario com GET: Listar um usuário com sucesso
+Scenario with GET: Listing a user successfully
+    [Documentation]    Scenario to test list a user with success.
+    [Tags]    success
     Login with admin
     Create user data
     Create a new user
     List the created user
     Check the created user data
 
-Cenario com GET: Contar todos os usuários com sucesso
+Scenario with GET: Counting all user successfully
+    [Documentation]    Scenario to test count a user with success.
+    [Tags]    success
     Login with admin
     Inicial count users
     Create user data

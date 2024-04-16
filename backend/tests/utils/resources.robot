@@ -5,11 +5,10 @@ Library      String
 Library      Collections
 Library      OperatingSystem
 Library      FakerLibrary    locale=pt_BR
-Library      cpf_generator
 Library      ./data/cpf_cnpj_generator.py
 
 #Variables
-Variables    ../../config/test_data.yaml
+Variables    ../../config/ambientes.yaml
 
 #Resources
 Resource    ./data/dynamic_data.robot

@@ -5,7 +5,9 @@ Resource    ../../utils/resources.robot
 ${ADMIN_TOKEN}
 
 *** Test Cases ***
-Cenario com DELETE: Deletar um usuário com sucesso
+Scenario with DELETE: Delete a user Successfully
+    [Documentation]    Scenario to test delete a user with success.
+    [Tags]    success    
     Login with admin
     Create user data
     Create a new user

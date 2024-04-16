@@ -5,7 +5,7 @@ Resource    ../../utils/resources.robot
 ${ADMIN_TOKEN}
 
 *** Test Cases ***
-Cenario com POST: Cadastrar uma nova diretoria com sucesso
+POST: Registering a new board successfully
     Login with admin
     Create board data
     Create a new board
