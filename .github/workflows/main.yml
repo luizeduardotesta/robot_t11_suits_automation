@@ -27,9 +27,13 @@ jobs:
       - name: Install RequestsLibrary
         run: pip install --quiet robotframework-requests
 
+      - name: Read ambientes.yaml file
+        id: read-ambientes
+        run: echo "::set-output name=ambientes::$(cat ambientes.yaml)"
+
       - name: Run backend tests
         working-directory: backend
-        run: robot -d backend/log -v env:suits tests
+        run: robot -d backend/log -v env:${{ steps.read-ambientes.outputs.ambientes }} tests
 
       - name: Run frontend tests
         working-directory: frontend
