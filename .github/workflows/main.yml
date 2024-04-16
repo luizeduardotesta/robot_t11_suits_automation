@@ -29,7 +29,7 @@ jobs:
 
       - name: Read ambientes.yaml file
         id: read-ambientes
-        run: echo "::set-output name=ambientes::$(cat ambientes.yaml)"
+        run: echo "::set-output name=ambientes::$(cat backend/config/ambientes.yaml)"
 
       - name: Run backend tests
         working-directory: backend
