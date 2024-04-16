@@ -1,0 +1,44 @@
+name: Robot_Framework_Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install SeleniumLibrary
+        run: pip install --quiet robotframework-seleniumlibrary
+
+      - name: Install RequestsLibrary
+        run: pip install --quiet robotframework-requests
+
+      - name: Run backend tests
+        working-directory: backend
+        run: robot -d log -v env:suits tests
+
+      - name: Run frontend tests
+        working-directory: frontend
+        run: robot -d log tests
+
+      - name: Archive test reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: |
+            backend/log
+            frontend/log
