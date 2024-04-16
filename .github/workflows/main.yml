@@ -21,16 +21,19 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - name: Install SeleniumLibrary
+        run: pip install --quiet robotframework-seleniumlibrary
+
+      - name: Install RequestsLibrary
+        run: pip install --quiet robotframework-requests
 
       - name: Run backend tests
         working-directory: backend
-        run: robot -d backend/log -v env:suits backend/tests
+        run: robot -d log -v env:suits tests
 
       - name: Run frontend tests
         working-directory: frontend
-        run: robot -d frontend/log frontend/tests
+        run: robot -d log tests
 
       - name: Archive test reports
         uses: actions/upload-artifact@v2
