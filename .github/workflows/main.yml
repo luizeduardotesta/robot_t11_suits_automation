@@ -36,9 +36,18 @@ jobs:
         id: read-ambientes
         run: echo "::set-output name=ambientes::$(cat backend/config/ambientes.yaml)"
 
+      - name: Set backend environment variables
+        id: set-backend-env
+        run: |
+          echo "export URL_SUITES=$(jq -r '.environments.suits.url' <<< ${{ steps.read-ambientes.outputs.ambientes }})" >> $GITHUB_ENV
+          echo "export ALIAS_SUITES=$(jq -r '.environments.suits.alias' <<< ${{ steps.read-ambientes.outputs.ambientes }})" >> $GITHUB_ENV
+          echo "export URL_ORIGINALS=$(jq -r '.environments.originals.url' <<< ${{ steps.read-ambientes.outputs.ambientes }})" >> $GITHUB_ENV
+          echo "export ALIAS_ORIGINALS=$(jq -r '.environments.originals.alias' <<< ${{ steps.read-ambientes.outputs.ambientes }})" >> $GITHUB_ENV
+
       - name: Run backend tests
         working-directory: backend
-        run: robot -d backend/log -v env:${{ steps.read-ambientes.outputs.ambientes }} tests
+        run: |
+          robot -d backend/log -v URL_SUITES:${{ env.URL_SUITES }} -v ALIAS_SUITES:${{ env.ALIAS_SUITES }} -v URL_ORIGINALS:${{ env.URL_ORIGINALS }} -v ALIAS_ORIGINALS:${{ env.ALIAS_ORIGINALS }} tests
 
       - name: Run frontend tests
         working-directory: frontend
