@@ -22,13 +22,35 @@ jobs:
           pip install --quiet robotframework-requests
           pip install --quiet robotframework-faker
 
+      - name: Download and Install Google Chrome
+        run: |
+          set -o errexit
+          STORAGE_DIR=/opt/render/project/.render
+
+          if [[ ! -d $STORAGE_DIR/chrome ]]; then
+            echo "...Downloading Chrome"
+            mkdir -p $STORAGE_DIR/chrome
+            cd $STORAGE_DIR/chrome
+            wget -P ./ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            dpkg -x ./google-chrome-stable_current_amd64.deb $STORAGE_DIR/chrome
+            rm ./google-chrome-stable_current_amd64.deb
+
+          else
+            echo "...Using Chrome from cache"
+          fi
+
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+        with:
+          chromedriver-version: '123.0.6312.122'
+
       - name: Run backend tests
         working-directory: backend
         run: robot -d log/backend tests
 
       - name: Run frontend tests
         working-directory: frontend
-        run: robot -d log/frontend tests
+        run: robot -d log/frontend tests  # Ajuste o caminho dos testes frontend conforme necessário
 
       - name: Archive test reports
         uses: actions/upload-artifact@v2
