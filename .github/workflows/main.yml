@@ -16,24 +16,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install SeleniumLibrary
-        run: pip install --quiet robotframework-seleniumlibrary
-
-      - name: Install RequestsLibrary
-        run: pip install --quiet robotframework-requests
+      - name: Install dependencies
+        run: |
+          pip install --quiet robotframework-seleniumlibrary
+          pip install --quiet robotframework-requests
+          pip install --quiet robotframework-faker
 
       - name: Run backend tests
         working-directory: backend
-        run: robot -d log -v env:suits tests
+        run: robot -d log/backend tests
 
       - name: Run frontend tests
         working-directory: frontend
-        run: robot -d log tests
+        run: robot -d log/frontend tests
 
       - name: Archive test reports
         uses: actions/upload-artifact@v2
