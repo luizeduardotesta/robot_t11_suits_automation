@@ -5,7 +5,7 @@ Resource    ../../utils/resources.robot
 Create a new board
     ${body}              Create Dictionary     boardName=${BOARD_NAME}
     Create API admin session
-    ${response}          POST On Session       alias=${alias.${env}}          url=${board_url}          json=${body}    expected_status=201
+    ${response}          POST On Session       alias=${alias}          url=${board_url}          json=${body}    expected_status=201
     Set Test Variable    ${BOARD_ID}            ${response.json()["newBoard"]["_id"]}
     Set Test Variable    ${BOARD_CODE}          ${response.json()["newBoard"]["boardCode"]}
     Set Test Variable    ${BOARD_STATUS}        ${response.json()["newBoard"]["status"]}

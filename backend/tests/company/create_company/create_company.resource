@@ -16,7 +16,7 @@ Create a new company
     ...                  mail=${COMPANY_MAIL}                matriz=${company_matriz}        responsibleContact=${responsibleContact}                      
     ...                  telephone=${company_telephone}      serviceDescription=${serviceDescription}    address=${address_list}                        
     Create API admin session
-    ${response}          POST On Session       alias=${alias.${env}}          url=${company_url}          json=${body}    expected_status=201
+    ${response}          POST On Session       alias=${alias}          url=${company_url}          json=${body}    expected_status=201
     Set Test Variable    ${COMPANY_ID}            ${response.json()["newCompany"]["_id"]}
     Set Test Variable    ${RESPONSE}              ${response.json()}
 
