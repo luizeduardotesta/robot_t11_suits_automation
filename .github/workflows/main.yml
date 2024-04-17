@@ -43,7 +43,7 @@ jobs:
         if: ${{ always() }}
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.pc-luiz-win }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: |
             backend/log
             frontend/log
