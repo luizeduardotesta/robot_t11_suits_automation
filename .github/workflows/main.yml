@@ -16,20 +16,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install ChromeDriver
-        uses: nanasess/setup-chromedriver@v2
-        with:
-          chromedriver-version:
-      - run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
-      
       - name: Install dependencies
         run: |
           pip install --quiet robotframework-seleniumlibrary
           pip install --quiet robotframework-requests
           pip install --quiet robotframework-faker
+
+      - name: Download and Install Google Chrome
+        run: |
+          set -o errexit
+          STORAGE_DIR=/opt/render/project/.render
+
+          if [[ ! -d $STORAGE_DIR/chrome ]]; then
+            echo "...Downloading Chrome"
+            mkdir -p $STORAGE_DIR/chrome
+            cd $STORAGE_DIR/chrome
+            wget -P ./ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            dpkg -x ./google-chrome-stable_current_amd64.deb $STORAGE_DIR/chrome
+            rm ./google-chrome-stable_current_amd64.deb
+            cd $HOME/project/src # Make sure we return to where we were
+          else
+            echo "...Using Chrome from cache"
+          fi
+
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+        with:
+          chromedriver-version: '88.0.4324.96'
 
       - name: Run backend tests
         working-directory: backend
