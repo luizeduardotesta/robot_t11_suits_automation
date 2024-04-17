@@ -34,8 +34,44 @@ jobs:
             wget -P ./ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
             dpkg -x ./google-chrome-stable_current_amd64.deb $STORAGE_DIR/chrome
             rm ./google-chrome-stable_current_amd64.deb
-            pwd # Print current directory
             cd $HOME/project/src # Make sure we return to where we were
+          elsename: Robot_Framework_Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          pip install --quiet robotframework-seleniumlibrary
+          pip install --quiet robotframework-requests
+          pip install --quiet robotframework-faker
+
+      - name: Download and Install Google Chrome
+        run: |
+          set -o errexit
+          STORAGE_DIR=/opt/render/project/.render
+
+          if [[ ! -d $STORAGE_DIR/chrome ]]; then
+            echo "...Downloading Chrome"
+            mkdir -p $STORAGE_DIR/chrome
+            cd $STORAGE_DIR/chrome
+            wget -P ./ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            dpkg -x ./google-chrome-stable_current_amd64.deb $STORAGE_DIR/chrome
+            rm ./google-chrome-stable_current_amd64.deb
+
           else
             echo "...Using Chrome from cache"
           fi
@@ -43,7 +79,31 @@ jobs:
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v2
         with:
-          chromedriver-version: '88.0.4324.96'
+          chromedriver-version: 
+
+      - name: Run backend tests
+        working-directory: backend
+        run: robot -d log/backend tests
+
+      - name: Run frontend tests
+        working-directory: frontend
+        run: robot -d log/frontend tests
+
+      - name: Archive test reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: |
+            backend/log
+            frontend/log
+
+            echo "...Using Chrome from cache"
+          fi
+
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+        with:
+          chromedriver-version: 
 
       - name: Run backend tests
         working-directory: backend
