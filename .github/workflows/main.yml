@@ -16,21 +16,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Read ambientes.yaml file
-        id: read-ambientes
-        run: echo "::set-output name=ambientes::$(<backend/config/ambientes.yaml)"
-
-      - name: Set up environment variables
-        run: |
-          export URL_SUITES=$(jq -r '.url.suits' <<< "${{ steps.read-ambientes.outputs.ambientes }}")
-          export ALIAS_SUITES=$(jq -r '.alias.suits' <<< "${{ steps.read-ambientes.outputs.ambientes }}")
-          export URL_ORIGINALS=$(jq -r '.url.originals' <<< "${{ steps.read-ambientes.outputs.ambientes }}")
-          export ALIAS_ORIGINALS=$(jq -r '.alias.originals' <<< "${{ steps.read-ambientes.outputs.ambientes }}")
-          echo "URL_SUITES=$URL_SUITES" >> $GITHUB_ENV
-          echo "ALIAS_SUITES=$ALIAS_SUITES" >> $GITHUB_ENV
-          echo "URL_ORIGINALS=$URL_ORIGINALS" >> $GITHUB_ENV
-          echo "ALIAS_ORIGINALS=$ALIAS_ORIGINALS" >> $GITHUB_ENV
-
       - name: Install dependencies
         run: |
           pip install --quiet robotframework-seleniumlibrary
@@ -39,7 +24,7 @@ jobs:
 
       - name: Run backend tests
         working-directory: backend
-        run: robot -d log/backend -v env:${{ env.URL_SUITES }} tests
+        run: robot -d log/backend tests
 
       - name: Run frontend tests
         working-directory: frontend
