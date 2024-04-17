@@ -23,4 +23,3 @@ User is logout of the page
     Click Button       ${logoutButton}
     Wait Until Element Is Visible    ${loginText}
     Location Should Be               ${login_url}
-    Capture Page Screenshot

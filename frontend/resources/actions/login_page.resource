@@ -28,4 +28,3 @@ User inserts their own email and password
 User is redirected to the home page
     Wait Until Element Is Visible    ${logoutButton}
     Location Should Be               ${home_url}
-    Capture Page Screenshot

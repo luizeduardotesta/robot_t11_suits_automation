@@ -16,6 +16,7 @@ Create user data
 ${browser}                   chrome
 ${login_url}                 https://automacao.qacoders-academy.com.br/login
 ${home_url}                  https://automacao.qacoders-academy.com.br/home
+${headless}                  headlesschrome
 
 #Login data
 ${loginText}                 //h3[contains(.,'Login')]

@@ -19,7 +19,6 @@ User fill the register user form
     Input Text         ${cpfInput}                ${create_user}[cpf]
     Input Password     ${passwordInput}           ${create_user}[password]
     Input Password     ${confirmPasswordInput}    ${create_user}[confirmPassword]
-    Capture Page Screenshot
     Click Button       ${saveButton}
  
 User click home icon 
@@ -27,18 +26,15 @@ User click home icon
     Click Element                    ${usuariosList}
     Wait Until Element Is Visible    ${homeIcon}
     Click Element                    ${homeIcon}
-    Capture Page Screenshot
 
 User clicks the next page button
     Click Element                    ${cadastroList}
     Click Element                    ${usuariosList}
     Wait Until Element Is Visible    ${nextPageButton}
     Click Element                    ${nextPageButton}
-    Capture Page Screenshot
 
 User clicks the previous page button
     Click Element    ${previousPageButton}
-    Capture Page Screenshot
 
 User should be on the next page
     Should Contain    ${paginationNext}    31-60
