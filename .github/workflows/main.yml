@@ -31,9 +31,19 @@ jobs:
         run: robot -d log/frontend tests
 
       - name: Archive test reports
+        if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
           name: test-reports
           path: |
+            backend/log
+            frontend/log
+
+      - name: Deploy test report
+        if: ${{ always() }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.pc-luiz-win }}
+          publish_dir: |
             backend/log
             frontend/log
