@@ -30,13 +30,12 @@ jobs:
         working-directory: frontend
         run: robot -d log/frontend tests
 
-      - name: Merge test logs
-        run: cat backend/log/*.xml frontend/log/*.xml > combined_log.xml
-
       - name: Archive test reports
         if: ${{ always() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: combined_log.xml
+          path: |
+            backend/log
+            frontend/log
 
